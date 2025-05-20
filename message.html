@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti...</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fce4ec;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .message-container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #d81b60;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .language {
+            font-style: italic;
+            color: #888;
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4081;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .video-container {
+            width: 100%;
+            max-width: 560px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .signature {
+            margin-top: 30px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.5rem;
+            color: #d81b60;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .message-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="message-container">
+        <h1>No quiero perderte...</h1>
+        
+        <p>"In every universe, in every reality, I would find you and choose you."</p>
+        <div class="language">(En cada universo, en cada realidad, te encontraría y te elegiría.)</div>
+        
+        <p>"Je ne veux pas te perdre, parce que tu es la personne qui fait battre mon cœur un peu plus fort."</p>
+        <div class="language">(No quiero perderte, porque eres la persona que hace que mi corazón lata un poco más fuerte.)</div>
+        
+        <p>"あなたと過ごした時間は、私の宝物です。これからもそばにいてほしい。"</p>
+        <div class="language">(El tiempo que pasé contigo es mi tesoro. Quiero que sigas a mi lado.)</div>
+        
+        <p>"No importa lo que pase, siempre habrá un lugar en mi corazón solo para ti."</p>
+        
+        <div class="signature">
+            Con todo mi cariño<br><br>
+            ( ∂ + m) ψ = 0
+        </div>
+    </div>
+    
+    <div class="video-container">
+    <!-- Video optimizado con el nuevo enlace -->
+    <div class="video-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/tONh92ClmOg?autoplay=0&controls=1&rel=0" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+    <script>
+        // Crear corazones flotantes
+        const heartsContainer = document.getElementById('hearts');
+        
+        function createHearts() {
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Inicializar corazones
+        createHearts();
+        
+        // Cambiar el color de fondo gradualmente
+        const colors = ['#fce4ec', '#f8bbd0', '#f48fb1', '#ffebee', '#ffcdd2'];
+        let currentColor = 0;
+        
+        setInterval(() => {
+            document.body.style.backgroundColor = colors[currentColor];
+            currentColor = (currentColor + 1) % colors.length;
+        }, 3000);
+    </script>
+</body>
+</html>
